@@ -41,7 +41,7 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_BOOK = gql`
+export const SAVE_BOOK = gql`
   mutation addThought($thoughtText: String!) {
     addThought(thoughtText: $thoughtText) {
         token
