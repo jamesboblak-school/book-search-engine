@@ -7,15 +7,6 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
-        bookCount
-        savedBooks {
-          bookId
-          authors
-          description
-          title
-          image
-          link
-        }
       }
     }
   }
@@ -28,23 +19,33 @@ export const ADD_USER = gql`
         user {
           _id
           username
-          bookCount
-          savedBooks {
-              bookId
-              authors
-              description
-              title
-              image
-              link
-      }
     }
   }
-`;
+  }
+  `;
 
 export const SAVE_BOOK = gql`
   mutation addThought($thoughtText: String!) {
     addThought(thoughtText: $thoughtText) {
-        token
+        user {
+          _id
+          username
+          savedBooks {
+              bookId
+              authors
+              description
+              title
+              image
+              link
+      }
+    }
+  }
+  }
+`;
+
+export const REMOVE_BOOK = gql`
+  mutation addComment($thoughtId: ID!) {
+    addComment(thoughtId: $thoughtId) {
         user {
           _id
           username
@@ -59,24 +60,5 @@ export const SAVE_BOOK = gql`
       }
     }
   }
-`;
-
-export const REMOVE_BOOK = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
-        token
-        user {
-          _id
-          username
-          bookCount
-          savedBooks {
-              bookId
-              authors
-              description
-              title
-              image
-              link
-      }
-    }
   }
 `;
